@@ -23,7 +23,7 @@ const LoginPage = () => {
     <div className='min-h-screen bg-cover bg-center flex items-center justify-center gap-8 sm:justify-evenly max-sm:flex-col backdrop-blur-2xl'>
 
       {/*-------- left side --------*/}
-      <div className='flex flex-col items-center justify-center gap-2 text-gray-500 max-md:hidden'>
+      <div className='flex flex-col items-center justify-center gap-2 text-gray-500'>
       <img src={assets.logo1} alt="" className='w-[min(30vw,350px)]'/>
       <p className='text-lg font-medium text-white'>Don't type. Just<span className='text-purple-500'> Blink .</span></p>
       </div>
