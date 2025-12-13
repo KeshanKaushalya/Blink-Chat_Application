@@ -9,18 +9,32 @@ const ProfilePage = () => {
   const [name, setName] = useState("Keshan Kaushalya")
   const [bio, setBio] = useState("I am a software developer")
 
+  const handleSubmit = async (e)=>{
+    e.preventDefault();
+    navigate('/')
+  }
+
   return (
     <div className='min-h-screen bg-cover bg-no-repeat flex items-center justify-center'>
       <div className='w-5/6 max-w-2xl backdrop-blur-2xl text-gray-300 border-2 border-gray-600 flex items-center justify-between max-sm:flex-col-reverse rounded-lg'>
-        <form className='flex flex-col gap-5 p-10 flex-1'>
+        <form onSubmit={handleSubmit} className='flex flex-col gap-5 p-10 flex-1'>
           <h3 className='text-lg'>Profile details</h3>
           <label htmlFor="avatar" className='flex items-center gap-3 cursor-pointer'>
             <input onChange={(e)=>setSelectedImg(e.target.files[0])} type="file" id='avatar' accept='.png, .jpg, .jpeg' hidden />
             <img src={selectedImg ? URL.createObjectURL(selectedImg) : assets.avatar_icon} alt="" className={`w-12 h-12 ${selectedImg && 'rounded-full'}`} />
             upload profile image
           </label>
+          <input onChange={(e)=>setName(e.target.value)} value={name} 
+          type="text" required placeholder='Your name' className='p-2 border border-gray-500 rounded-md focus:outline-none focus:ring-2 focus:ring-violet-500'/>
+          <textarea onChange={(e)=>setBio(e.target.value)} value={bio} 
+          placeholder='Write profile bio' required className='p-2 border border-gray-500 rounded-md focus:outline-none focus:ring-2 focus:ring-violet-500' rows={4}></textarea>
+          
+          <button type="submit" className='bg-gradient-to-r form-purple-400 to-violet-600 text-white p-2 rounded-full text-lg cursor-pointer'>Save</button>
         </form>
-        <img src="" alt="" />
+         <div className='flex flex-col items-center justify-center gap-2 text-gray-500'>
+        <img className='max-w-50 aspect-full  max-10 max-sm:mt-10 mr-5' src={assets.logo1} alt="" />
+        <p className='text-lg font-medium text-white'>Don't type. Just<span className='text-purple-500'> Blink .</span></p>
+        </div>
       </div>
     </div>
   )
