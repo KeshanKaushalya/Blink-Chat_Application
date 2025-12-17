@@ -80,7 +80,10 @@ const LoginPage = () => {
             <p className='text-sm text-gray-600'>Create an account <span onClick={()=> setCurrState("Sign up")} className='font-medium text-violet-500 cursor-pointer'>Click here</span></p>
           )}
         </div>
-        <p className='text-sm text-gray-600'>Copyright 2025 © Blink. All right reserved.<br /><center> <span className='font-medium text-violet-500 cursor-pointer'><a href="https://github.com/KeshanKaushalya/" target="_blank"> by KeshanKushalya</a></span></center></p>
+        <div className='text-sm text-gray-600'>
+          <p>Copyright 2025 © Blink. All right reserved.</p>
+          <p className='text-center'><span className='font-medium text-violet-500 cursor-pointer'><a href="https://github.com/KeshanKaushalya/" target="_blank"> by KeshanKushalya</a></span></p>
+        </div>
       </form>
     </div>
   )
