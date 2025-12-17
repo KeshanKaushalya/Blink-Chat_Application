@@ -183,20 +183,6 @@ cd client
 npm run dev
 ```
 
-## 📱 Screenshots
-
-<div align="center">
-
-### Login/Signup Interface
-![Login Interface](https://via.placeholder.com/800x400/8B5CF6/FFFFFF?text=Login+Interface)
-
-### Chat Interface
-![Chat Interface](https://via.placeholder.com/800x400/8B5CF6/FFFFFF?text=Real-time+Chat)
-
-### Profile Management
-![Profile Management](https://via.placeholder.com/800x400/8B5CF6/FFFFFF?text=Profile+Settings)
-
-</div>
 
 ## 🔧 API Endpoints
 
