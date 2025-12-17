@@ -1,17 +1,33 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import assets from '../assets/assets'
 import { useNavigate } from 'react-router-dom'
+import { AuthContext } from '../../context/AuthContext'
 
 const ProfilePage = () => {
 
+  const {authUser, updateProfile} = useContext(AuthContext)
+
   const [selectedImg, setSelectedImg] = useState(null)
   const navigate = useNavigate();
-  const [name, setName] = useState("Keshan Kaushalya")
-  const [bio, setBio] = useState("I am a software developer")
+  const [name, setName] = useState(authUser.fullName)
+  const [bio, setBio] = useState(authUser.bio)
 
   const handleSubmit = async (e)=>{
     e.preventDefault();
-    navigate('/')
+    if(!selectedImg){
+      await updateProfile({fullName: name, bio});
+      navigate('/');
+      return;
+    }
+
+    const reader = new FileReader();
+    reader.readAsDataURL(selectedImg);;
+    reader.onload = async ()=>{
+      const base64Image = reader.result;
+      await updateProfile({profilePic: base64Image, fullName: name, bio});
+      navigate('/');
+    }
+    
   }
 
   return (
@@ -31,10 +47,10 @@ const ProfilePage = () => {
           
           <button type="submit" className='bg-gradient-to-r form-purple-400 to-violet-600 text-white p-2 rounded-full text-lg cursor-pointer'>Save</button>
         </form>
-         <div className='flex flex-col items-center justify-center gap-2 text-gray-500'>
-        <img className='max-w-50 aspect-full  max-10 max-sm:mt-10 mr-5' src={assets.logo1} alt="" />
-        <p className='text-lg font-medium text-white'>Don't type. Just<span className='text-purple-500'> Blink .</span></p>
-        </div>
+        <div className='flex flex-col items-center justify-center gap-2 text-gray-500'>
+        <img className={`max-w-50 aspect-full rounded-full max-10 max-sm:mt-10 mr-5 ${selectedImg && 'rounded-full'}`} src={authUser?.profilePic || assets.logo1} alt="" />
+         <p className='text-lg font-medium text-white'>Don't type. Just<span className='text-purple-500'> Blink .</span></p>
+         </div>
       </div>
     </div>
   )
